@@ -2,20 +2,17 @@ function findOdd(A) {
   const sortedArr = A.sort((a, b) => a - b);
   console.log(sortedArr);
   let countedArr = [];
-  let isEqual = true;
 
   for (let i = 0; i < sortedArr.length; i++) {
     let count = 0;
 
     if (!countedArr.includes(sortedArr[i])) {
       countedArr.push(sortedArr[i]);
-      isEqual = true;
       count++;
       for (let j = i + 1; j < sortedArr.length; j++) {
         console.log(`i: ${sortedArr[i]}, j: ${sortedArr[j]} `);
         if (sortedArr[i] !== sortedArr[j]) {
           console.log("doesnt equal");
-          isEqual = false;
           break;
         } else {
           console.log("is equal");
