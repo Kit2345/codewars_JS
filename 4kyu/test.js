@@ -143,32 +143,71 @@ function whoIsWinner(piecesPositionList) {
 
       // diagonal up:
       console.log("checking diagonal up");
-      if (colNum === 0 && lastElement <= 2) {
-        console.log("last element <=2");
-        let checkUp = [];
-        for (let j = lastElement + 1; j <= 3; j++) {
-          console.log("current", gameBoardState[colNum + j][lastElement + j]);
-          if (
-            gameBoardState[colNum][lastElement] !=
-            gameBoardState[colNum + j][lastElement + j]
-          ) {
-            console.log(
-              "no match",
-              gameBoardState[colNum][lastElement],
-              gameBoardState[colNum + j][lastElement + j]
-            );
-            break;
-          }
+      //   if (colNum === 0 && lastElement <= 2) {
+      //     console.log("last element <=2");
+      //     let checkUp = [];
+      //     for (let j = lastElement + 1; j <= 3; j++) {
+      //       console.log("current", gameBoardState[colNum + j][lastElement + j]);
+      //       if (
+      //         gameBoardState[colNum][lastElement] !=
+      //         gameBoardState[colNum + j][lastElement + j]
+      //       ) {
+      //         console.log(
+      //           "no match",
+      //           gameBoardState[colNum][lastElement],
+      //           gameBoardState[colNum + j][lastElement + j]
+      //         );
+      //         break;
+      //       }
 
-          if (gameBoardState[colNum + j][lastElement + j] == undefined) {
-            console.log("undefined");
+      //       if (gameBoardState[colNum + j][lastElement + j] == undefined) {
+      //         console.log("undefined");
+      //         break;
+      //       }
+      //       checkUp.push(gameBoardState[colNum + j][lastElement + j]);
+      //       console.log("checkup", checkUp);
+      //     }
+      //     console.log("winner");
+      //     return gameBoardState[colNum][lastElement];
+      //   }
+
+      //   finding starting co-ordinates:
+      let startingRow = lastElement;
+      let startingCol = colNum;
+
+      while (startingRow > 0 && startingCol > 0) {
+        startingCol--;
+        startingRow--;
+        console.log("starting col:", startingCol, "starting row:", startingRow);
+      }
+
+      // now add all colours diagonall up from starting position:
+      let currentCol = startingCol;
+      let currentRow = startingRow;
+      let diagUpCheck = [];
+
+      while (currentCol <= 6 && currentRow <= 5) {
+        diagUpCheck.push(gameBoardState[currentCol][currentRow]);
+        currentCol++;
+        currentRow++;
+      }
+
+      console.log("diagUpCheck", diagUpCheck);
+      for (let j = 0; j < diagUpCheck.length; j++) {
+        for (let k = 0; k <= 3; k++) {
+          if (diagUpCheck[k] == undefined) {
+            console.log("undefined, loop exit");
             break;
           }
-          checkUp.push(gameBoardState[colNum + j][lastElement + j]);
-          console.log("checkup", checkUp);
+          if (diagUpCheck[k] != diagUpCheck[j]) {
+            console.log("j", j, "k:", k, diagUpCheck[k], "!=", diagUpCheck[j]);
+            break;
+          }
+          if (k === 3 && diagUpCheck[k] == diagUpCheck[j]) {
+            console.log("winner:", diagUpCheck[j]);
+            return diagUpCheck[j];
+          }
         }
-        console.log("winner");
-        return gameBoardState[colNum][lastElement];
       }
     }
   }
