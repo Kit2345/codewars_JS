@@ -66,7 +66,8 @@ function whoIsWinner(piecesPositionList) {
     const letter = array[0];
     const colNum = whatNum(letter);
     const colourPlayed = array[1];
-    console.log(letter, colNum);
+    // console.log(letter, colNum);
+    // console.log(typeof colNum);
 
     gameBoardState[colNum].push(colourPlayed);
     const lastElement = gameBoardState[colNum].length - 1;
@@ -77,8 +78,17 @@ function whoIsWinner(piecesPositionList) {
     //       console.log("number of elements in array", letter,":", gameBoardState[letter].length)
     // co-ordinates of last played piece is: gameBoardState[letter][lastElement]
 
-    if (i >= 100) {
-      console.log("i:", i, "letter:", letter, "board:", gameBoardState);
+    if (i >= 6) {
+      console.log(
+        "i:",
+        i,
+        "letter:",
+        letter,
+        "board:",
+        gameBoardState,
+        "row:",
+        lastElement
+      );
       console.log("checking if game won");
 
       // row:
@@ -131,9 +141,34 @@ function whoIsWinner(piecesPositionList) {
         return gameBoardState[colNum][lastElement];
       }
 
-      // diagonal left:
-      console.log("checking diagonal left");
-      if (colNum === "A") {
+      // diagonal up:
+      console.log("checking diagonal up");
+      if (colNum === 0 && lastElement <= 2) {
+        console.log("last element <=2");
+        let checkUp = [];
+        for (let j = lastElement + 1; j <= 3; j++) {
+          console.log("current", gameBoardState[colNum + j][lastElement + j]);
+          if (
+            gameBoardState[colNum][lastElement] !=
+            gameBoardState[colNum + j][lastElement + j]
+          ) {
+            console.log(
+              "no match",
+              gameBoardState[colNum][lastElement],
+              gameBoardState[colNum + j][lastElement + j]
+            );
+            break;
+          }
+
+          if (gameBoardState[colNum + j][lastElement + j] == undefined) {
+            console.log("undefined");
+            break;
+          }
+          checkUp.push(gameBoardState[colNum + j][lastElement + j]);
+          console.log("checkup", checkUp);
+        }
+        console.log("winner");
+        return gameBoardState[colNum][lastElement];
       }
     }
   }
