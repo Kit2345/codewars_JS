@@ -94,36 +94,6 @@ function whoIsWinner(piecesPositionList) {
       );
       console.log("checking if game won");
 
-      // row:
-      //   for (let j = 0; j <= 3; j++) {
-      //     console.log("checking row j:", j);
-      //     let rowCheck = [];
-      //     for (let k = 0; k <= 3; k++) {
-      //       console.log("checking row k:", k);
-      //       if (gameBoardState[colNum][j + k] == undefined) {
-      //         //             console.log("undefined");
-      //         break;
-      //       }
-      //       let sum = j + k;
-      //       //           console.log("sum", sum)
-      //       rowCheck.push(gameBoardState[colNum][sum]);
-      //       console.log("current row:", rowCheck);
-
-      //       if (k > 0) {
-      //         if (rowCheck[k] !== rowCheck[k - 1]) {
-      //           //               console.log("k doesnt equal");
-      //           //   console.log(checkPieces[k]);
-      //           //   console.log(checkPieces[k - 1]);
-      //           break;
-      //         }
-      //       }
-      //       if (k === 3 && rowCheck[2] === rowCheck[3]) {
-      //         console.log("winner is:", rowCheck[3]);
-      //         return rowCheck[3];
-      //       }
-      //     }
-      //   }
-
       // row
 
       // take all of the row into a variable
