@@ -1,35 +1,32 @@
 piecesPositionList = [
-  "D_Red",
-  "C_Yellow",
-  "F_Red",
-  "B_Yellow",
+  "A_Red",
+  "G_Yellow",
+  "B_Red",
+  "F_Yellow",
   "C_Red",
-  "C_Yellow",
-  "F_Red",
   "D_Yellow",
-  "B_Red",
-  "C_Yellow",
-  "A_Red",
+  "C_Red",
+  "D_Yellow",
+  "G_Red",
   "F_Yellow",
-  "G_Red",
-  "B_Yellow",
-  "G_Red",
-  "B_Yellow",
-  "F_Red",
-  "C_Yellow",
-  "E_Red",
-  "F_Yellow",
-  "B_Red",
-  "E_Yellow",
   "A_Red",
-  "G_Yellow",
-  "G_Red",
   "A_Yellow",
-  "D_Red",
+  "E_Red",
+  "E_Yellow",
+  "C_Red",
+  "E_Yellow",
+  "F_Red",
+  "B_Yellow",
+  "E_Red",
   "D_Yellow",
   "D_Red",
-  "G_Yellow",
+  "A_Yellow",
   "G_Red",
+  "F_Yellow",
+  "E_Red",
+  "G_Yellow",
+  "D_Red",
+  "E_Yellow",
 ];
 
 function whoIsWinner(piecesPositionList) {
@@ -102,16 +99,16 @@ function whoIsWinner(piecesPositionList) {
         rowCheck.push(gameBoardState[j][lastElement]);
       }
 
-      console.log("current row check", rowCheck);
+      //   console.log("current row check", rowCheck);
 
       for (let j = 0; j < rowCheck.length; j++) {
         for (let k = 0; k <= 3; k++) {
           if (rowCheck[j + k] == undefined) {
-            console.log(k, "break");
+            // console.log(k, "break");
             break;
           }
           if (rowCheck[j] != rowCheck[j + k]) {
-            console.log(k, rowCheck[j], "!=", rowCheck[j + k]);
+            // console.log(k, rowCheck[j], "!=", rowCheck[j + k]);
             break;
           }
           if (k === 3 && rowCheck[j] == rowCheck[j + k]) {
@@ -123,24 +120,34 @@ function whoIsWinner(piecesPositionList) {
 
       // Column
       //       let columnCheck = [];
-      for (let j = 1; j <= 3; j++) {
-        //         console.log("column check");
+      for (let j = lastElement; j > lastElement - 4; j--) {
+        console.log("column check");
+        console.log("current col check", j, gameBoardState[colNum]);
 
         if (gameBoardState[colNum].length < 4) {
           //           console.log("column has less than 4 pieces");
           break;
         }
 
+        if (gameBoardState[colNum][lastElement] != gameBoardState[colNum][j]) {
+          break;
+        }
         //         console.log("column has 4 pieces or more")
         //         columnCheck.push(gameBoardState[letter][lastElement - j]);
         //         console.log(columnCheck);
+        // if (
+        //   gameBoardState[colNum][lastElement - j] !==
+        //   gameBoardState[colNum][lastElement]
+        // ) {
+        //   break;
+        // }
         if (
-          gameBoardState[colNum][lastElement - j] !==
-          gameBoardState[colNum][lastElement]
+          j === lastElement - 3 &&
+          gameBoardState[colNum][lastElement] == gameBoardState[colNum][j]
         ) {
-          break;
+          console.log("winner:", gameBoardState[colNum][lastElement]);
+          return gameBoardState[colNum][lastElement];
         }
-        return gameBoardState[colNum][lastElement];
       }
 
       // diagonal up:
@@ -171,11 +178,11 @@ function whoIsWinner(piecesPositionList) {
       for (let j = 0; j < diagUpCheck.length; j++) {
         for (let k = 0; k <= 3; k++) {
           if (diagUpCheck[k] == undefined) {
-            // console.log("undefined, loop exit");
+            console.log("j", j, "k:", k, "undefined, loop exit");
             break;
           }
           if (diagUpCheck[k] != diagUpCheck[j]) {
-            // console.log("j", j, "k:", k, diagUpCheck[k], "!=", diagUpCheck[j]);
+            console.log("j", j, "k:", k, diagUpCheck[k], "!=", diagUpCheck[j]);
             break;
           }
           if (k === 3 && diagUpCheck[k] == diagUpCheck[j]) {
@@ -233,7 +240,7 @@ function whoIsWinner(piecesPositionList) {
             break;
           }
           if (k === 3 && diagDownCheck[k] == diagDownCheck[lastElement]) {
-            // console.log("winner:", diagDownCheck[lastElement]);
+            console.log("winner:", diagDownCheck[lastElement]);
             return diagDownCheck[lastElement];
           }
         }
