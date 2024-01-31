@@ -1,32 +1,33 @@
 piecesPositionList = [
+  "B_Red",
+  "D_Yellow",
+  "G_Red",
+  "D_Yellow",
+  "E_Red",
+  "F_Yellow",
+  "C_Red",
+  "G_Yellow",
   "A_Red",
+  "A_Yellow",
+  "D_Red",
+  "E_Yellow",
+  "A_Red",
+  "A_Yellow",
+  "D_Red",
+  "A_Yellow",
+  "B_Red",
+  "D_Yellow",
+  "G_Red",
+  "C_Yellow",
+  "E_Red",
   "G_Yellow",
   "B_Red",
-  "F_Yellow",
-  "C_Red",
-  "D_Yellow",
-  "C_Red",
-  "D_Yellow",
-  "G_Red",
-  "F_Yellow",
-  "A_Red",
-  "A_Yellow",
-  "E_Red",
-  "E_Yellow",
-  "C_Red",
-  "E_Yellow",
-  "F_Red",
   "B_Yellow",
-  "E_Red",
-  "D_Yellow",
-  "D_Red",
-  "A_Yellow",
   "G_Red",
-  "F_Yellow",
-  "E_Red",
-  "G_Yellow",
-  "D_Red",
+  "C_Yellow",
+  "C_Red",
   "E_Yellow",
+  "D_Red",
 ];
 
 function whoIsWinner(piecesPositionList) {
@@ -178,7 +179,7 @@ function whoIsWinner(piecesPositionList) {
             break;
           }
           if (k === 3 && diagUpCheck[k] == diagUpCheck[j]) {
-            // console.log("winner:", diagUpCheck[j]);
+            console.log("winner:", diagUpCheck[j]);
             return diagUpCheck[j];
           }
         }
@@ -218,23 +219,24 @@ function whoIsWinner(piecesPositionList) {
 
       for (let j = 0; j < diagDownCheck.length; j++) {
         for (let k = 0; k <= 3; k++) {
-          if (diagDownCheck[k] == undefined) {
-            // console.log("undefined, loop exit");
+          if (diagDownCheck[k + j] == undefined) {
+            console.log("undefined, loop exit");
             break;
           }
-          if (k > 0 && diagDownCheck[k] != diagDownCheck[k - 1]) {
-            // console.log(
-            //   "j",
-            //   j,
-            //   "k:",
-            //   k,
-            //   diagDownCheck[k],
-            //   "!=",
-            //   diagDownCheck[j]
-            // );
+          if (k > 0 && diagDownCheck[k + j] != diagDownCheck[j + k - 1]) {
+            console.log(
+              "down check",
+              "j",
+              j,
+              "k:",
+              k,
+              diagDownCheck[j + k],
+              "!=",
+              diagDownCheck[j + k - 1]
+            );
             break;
           }
-          if (k === 3 && diagDownCheck[k] == diagDownCheck[j]) {
+          if (k === 3 && diagDownCheck[k + j] == diagDownCheck[j]) {
             console.log("winner:", diagDownCheck[j]);
             return diagDownCheck[j];
           }
@@ -242,7 +244,7 @@ function whoIsWinner(piecesPositionList) {
       }
     }
   }
-
+  console.log(gameBoardState);
   console.log("Draw");
   return "Draw";
 }
