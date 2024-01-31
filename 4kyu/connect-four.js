@@ -79,17 +79,17 @@ function whoIsWinner(piecesPositionList) {
     // co-ordinates of last played piece is: gameBoardState[letter][lastElement]
 
     if (i >= 6) {
-      console.log(
-        "i:",
-        i,
-        "letter:",
-        letter,
-        "board:",
-        gameBoardState,
-        "row:",
-        lastElement
-      );
-      console.log("checking if game won");
+      //   console.log(
+      //     "i:",
+      //     i,
+      //     "letter:",
+      //     letter,
+      //     "board:",
+      //     gameBoardState,
+      //     "row:",
+      //     lastElement
+      //   );
+      //   console.log("checking if game won");
 
       // row
 
@@ -121,8 +121,8 @@ function whoIsWinner(piecesPositionList) {
       // Column
       //       let columnCheck = [];
       for (let j = lastElement; j > lastElement - 4; j--) {
-        console.log("column check");
-        console.log("current col check", j, gameBoardState[colNum]);
+        // console.log("column check");
+        // console.log("current col check", j, gameBoardState[colNum]);
 
         if (gameBoardState[colNum].length < 4) {
           //           console.log("column has less than 4 pieces");
@@ -132,15 +132,7 @@ function whoIsWinner(piecesPositionList) {
         if (gameBoardState[colNum][lastElement] != gameBoardState[colNum][j]) {
           break;
         }
-        //         console.log("column has 4 pieces or more")
-        //         columnCheck.push(gameBoardState[letter][lastElement - j]);
-        //         console.log(columnCheck);
-        // if (
-        //   gameBoardState[colNum][lastElement - j] !==
-        //   gameBoardState[colNum][lastElement]
-        // ) {
-        //   break;
-        // }
+
         if (
           j === lastElement - 3 &&
           gameBoardState[colNum][lastElement] == gameBoardState[colNum][j]
@@ -151,7 +143,7 @@ function whoIsWinner(piecesPositionList) {
       }
 
       // diagonal up:
-      console.log("checking diagonal up");
+      //   console.log("checking diagonal up");
 
       //   finding starting co-ordinates:
       let startingRow = lastElement;
@@ -178,15 +170,15 @@ function whoIsWinner(piecesPositionList) {
       for (let j = 0; j < diagUpCheck.length; j++) {
         for (let k = 0; k <= 3; k++) {
           if (diagUpCheck[k] == undefined) {
-            console.log("j", j, "k:", k, "undefined, loop exit");
+            // console.log("j", j, "k:", k, "undefined, loop exit");
             break;
           }
           if (diagUpCheck[k] != diagUpCheck[j]) {
-            console.log("j", j, "k:", k, diagUpCheck[k], "!=", diagUpCheck[j]);
+            // console.log("j", j, "k:", k, diagUpCheck[k], "!=", diagUpCheck[j]);
             break;
           }
           if (k === 3 && diagUpCheck[k] == diagUpCheck[j]) {
-            console.log("winner:", diagUpCheck[j]);
+            // console.log("winner:", diagUpCheck[j]);
             return diagUpCheck[j];
           }
         }
@@ -194,6 +186,7 @@ function whoIsWinner(piecesPositionList) {
 
       // diagonal down
       //   finding starting co-ordinates:
+      console.log("checking diagonal down");
       let startRowDown = lastElement;
       let startColDown = colNum;
 
@@ -221,13 +214,15 @@ function whoIsWinner(piecesPositionList) {
         // console.log(diagDownCheck);
       }
 
+      console.log("i", i, diagDownCheck);
+
       for (let j = 0; j < diagDownCheck.length; j++) {
         for (let k = 0; k <= 3; k++) {
           if (diagDownCheck[k] == undefined) {
             // console.log("undefined, loop exit");
             break;
           }
-          if (diagDownCheck[k] != diagDownCheck[j]) {
+          if (k > 0 && diagDownCheck[k] != diagDownCheck[k - 1]) {
             // console.log(
             //   "j",
             //   j,
@@ -239,9 +234,9 @@ function whoIsWinner(piecesPositionList) {
             // );
             break;
           }
-          if (k === 3 && diagDownCheck[k] == diagDownCheck[lastElement]) {
-            console.log("winner:", diagDownCheck[lastElement]);
-            return diagDownCheck[lastElement];
+          if (k === 3 && diagDownCheck[k] == diagDownCheck[j]) {
+            console.log("winner:", diagDownCheck[j]);
+            return diagDownCheck[j];
           }
         }
       }
