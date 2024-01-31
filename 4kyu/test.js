@@ -1,32 +1,35 @@
 piecesPositionList = [
+  "D_Red",
   "C_Yellow",
-  "E_Red",
-  "G_Yellow",
-  "B_Red",
+  "F_Red",
+  "B_Yellow",
+  "C_Red",
+  "C_Yellow",
+  "F_Red",
   "D_Yellow",
   "B_Red",
+  "C_Yellow",
+  "A_Red",
+  "F_Yellow",
+  "G_Red",
   "B_Yellow",
   "G_Red",
-  "C_Yellow",
-  "C_Red",
-  "D_Yellow",
+  "B_Yellow",
   "F_Red",
+  "C_Yellow",
+  "E_Red",
+  "F_Yellow",
+  "B_Red",
   "E_Yellow",
   "A_Red",
-  "A_Yellow",
+  "G_Yellow",
   "G_Red",
   "A_Yellow",
-  "F_Red",
-  "F_Yellow",
   "D_Red",
-  "B_Yellow",
-  "E_Red",
   "D_Yellow",
-  "A_Red",
+  "D_Red",
   "G_Yellow",
-  "D_Red",
-  "D_Yellow",
-  "C_Red",
+  "G_Red",
 ];
 
 function whoIsWinner(piecesPositionList) {
@@ -92,29 +95,58 @@ function whoIsWinner(piecesPositionList) {
       console.log("checking if game won");
 
       // row:
-      for (let j = 0; j <= 3; j++) {
-        let rowCheck = [];
+      //   for (let j = 0; j <= 3; j++) {
+      //     console.log("checking row j:", j);
+      //     let rowCheck = [];
+      //     for (let k = 0; k <= 3; k++) {
+      //       console.log("checking row k:", k);
+      //       if (gameBoardState[colNum][j + k] == undefined) {
+      //         //             console.log("undefined");
+      //         break;
+      //       }
+      //       let sum = j + k;
+      //       //           console.log("sum", sum)
+      //       rowCheck.push(gameBoardState[colNum][sum]);
+      //       console.log("current row:", rowCheck);
+
+      //       if (k > 0) {
+      //         if (rowCheck[k] !== rowCheck[k - 1]) {
+      //           //               console.log("k doesnt equal");
+      //           //   console.log(checkPieces[k]);
+      //           //   console.log(checkPieces[k - 1]);
+      //           break;
+      //         }
+      //       }
+      //       if (k === 3 && rowCheck[2] === rowCheck[3]) {
+      //         console.log("winner is:", rowCheck[3]);
+      //         return rowCheck[3];
+      //       }
+      //     }
+      //   }
+
+      // row
+
+      // take all of the row into a variable
+      let rowCheck = [];
+      for (let j = 0; j <= 6; j++) {
+        rowCheck.push(gameBoardState[j][lastElement]);
+      }
+
+      console.log("current row check", rowCheck);
+
+      for (let j = 0; j < rowCheck.length; j++) {
         for (let k = 0; k <= 3; k++) {
-          if (gameBoardState[colNum][j + k] == undefined) {
-            //             console.log("undefined");
+          if (rowCheck[j + k] == undefined) {
+            console.log(k, "break");
             break;
           }
-          let sum = j + k;
-          //           console.log("sum", sum)
-          rowCheck.push(gameBoardState[colNum][sum]);
-          //           console.log("current row:", rowCheck)
-
-          if (k > 0) {
-            if (rowCheck[k] !== rowCheck[k - 1]) {
-              //               console.log("k doesnt equal");
-              //   console.log(checkPieces[k]);
-              //   console.log(checkPieces[k - 1]);
-              break;
-            }
+          if (rowCheck[j] != rowCheck[j + k]) {
+            console.log(k, rowCheck[j], "!=", rowCheck[j + k]);
+            break;
           }
-          if (k === 3 && rowCheck[2] === rowCheck[3]) {
-            //      console.log("winner is:", rowCheck[3]);
-            return rowCheck[3];
+          if (k === 3 && rowCheck[j] == rowCheck[j + k]) {
+            console.log("winner:", rowCheck[j]);
+            return rowCheck[j];
           }
         }
       }
@@ -143,33 +175,6 @@ function whoIsWinner(piecesPositionList) {
 
       // diagonal up:
       console.log("checking diagonal up");
-      //   if (colNum === 0 && lastElement <= 2) {
-      //     console.log("last element <=2");
-      //     let checkUp = [];
-      //     for (let j = lastElement + 1; j <= 3; j++) {
-      //       console.log("current", gameBoardState[colNum + j][lastElement + j]);
-      //       if (
-      //         gameBoardState[colNum][lastElement] !=
-      //         gameBoardState[colNum + j][lastElement + j]
-      //       ) {
-      //         console.log(
-      //           "no match",
-      //           gameBoardState[colNum][lastElement],
-      //           gameBoardState[colNum + j][lastElement + j]
-      //         );
-      //         break;
-      //       }
-
-      //       if (gameBoardState[colNum + j][lastElement + j] == undefined) {
-      //         console.log("undefined");
-      //         break;
-      //       }
-      //       checkUp.push(gameBoardState[colNum + j][lastElement + j]);
-      //       console.log("checkup", checkUp);
-      //     }
-      //     console.log("winner");
-      //     return gameBoardState[colNum][lastElement];
-      //   }
 
       //   finding starting co-ordinates:
       let startingRow = lastElement;
@@ -178,10 +183,10 @@ function whoIsWinner(piecesPositionList) {
       while (startingRow > 0 && startingCol > 0) {
         startingCol--;
         startingRow--;
-        console.log("starting col:", startingCol, "starting row:", startingRow);
+        // console.log("starting col:", startingCol, "starting row:", startingRow);
       }
 
-      // now add all colours diagonall up from starting position:
+      // now add all colours diagonally right up from starting position:
       let currentCol = startingCol;
       let currentRow = startingRow;
       let diagUpCheck = [];
@@ -192,15 +197,15 @@ function whoIsWinner(piecesPositionList) {
         currentRow++;
       }
 
-      console.log("diagUpCheck", diagUpCheck);
+      //   console.log("diagUpCheck", diagUpCheck);
       for (let j = 0; j < diagUpCheck.length; j++) {
         for (let k = 0; k <= 3; k++) {
           if (diagUpCheck[k] == undefined) {
-            console.log("undefined, loop exit");
+            // console.log("undefined, loop exit");
             break;
           }
           if (diagUpCheck[k] != diagUpCheck[j]) {
-            console.log("j", j, "k:", k, diagUpCheck[k], "!=", diagUpCheck[j]);
+            // console.log("j", j, "k:", k, diagUpCheck[k], "!=", diagUpCheck[j]);
             break;
           }
           if (k === 3 && diagUpCheck[k] == diagUpCheck[j]) {
@@ -209,8 +214,64 @@ function whoIsWinner(piecesPositionList) {
           }
         }
       }
+
+      // diagonal down
+      //   finding starting co-ordinates:
+      let startRowDown = lastElement;
+      let startColDown = colNum;
+
+      while (startRowDown > 0 && startColDown < 6) {
+        startColDown++;
+        startRowDown--;
+        // console.log(
+        //   "starting col:",
+        //   startColDown,
+        //   "starting row:",
+        //   startRowDown
+        // );
+      }
+      // now add all colours diagonally left up from starting position:
+      let currentColDown = startColDown;
+      let currentRowDown = startRowDown;
+      let diagDownCheck = [];
+
+      //   console.log(currentColDown, currentRowDown);
+
+      while (currentColDown >= 0 && currentRowDown <= 5) {
+        diagDownCheck.push(gameBoardState[currentColDown][currentRowDown]);
+        currentColDown--;
+        currentRowDown++;
+        // console.log(diagDownCheck);
+      }
+
+      for (let j = 0; j < diagDownCheck.length; j++) {
+        for (let k = 0; k <= 3; k++) {
+          if (diagDownCheck[k] == undefined) {
+            // console.log("undefined, loop exit");
+            break;
+          }
+          if (diagDownCheck[k] != diagDownCheck[j]) {
+            // console.log(
+            //   "j",
+            //   j,
+            //   "k:",
+            //   k,
+            //   diagDownCheck[k],
+            //   "!=",
+            //   diagDownCheck[j]
+            // );
+            break;
+          }
+          if (k === 3 && diagDownCheck[k] == diagDownCheck[lastElement]) {
+            // console.log("winner:", diagDownCheck[lastElement]);
+            return diagDownCheck[lastElement];
+          }
+        }
+      }
     }
   }
+
+  console.log("Draw");
   return "Draw";
 }
 
