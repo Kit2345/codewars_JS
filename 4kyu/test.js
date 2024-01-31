@@ -1,23 +1,75 @@
+piecesPositionList = [
+  "C_Yellow",
+  "E_Red",
+  "G_Yellow",
+  "B_Red",
+  "D_Yellow",
+  "B_Red",
+  "B_Yellow",
+  "G_Red",
+  "C_Yellow",
+  "C_Red",
+  "D_Yellow",
+  "F_Red",
+  "E_Yellow",
+  "A_Red",
+  "A_Yellow",
+  "G_Red",
+  "A_Yellow",
+  "F_Red",
+  "F_Yellow",
+  "D_Red",
+  "B_Yellow",
+  "E_Red",
+  "D_Yellow",
+  "A_Red",
+  "G_Yellow",
+  "D_Red",
+  "D_Yellow",
+  "C_Red",
+];
+
 function whoIsWinner(piecesPositionList) {
   // Game board
   let gameBoardState = {
-    A: [],
-    B: [],
-    C: [],
-    D: [],
-    E: [],
-    F: [],
-    G: [],
+    0: [],
+    1: [],
+    2: [],
+    3: [],
+    4: [],
+    5: [],
+    6: [],
   };
+
+  function whatNum(letter) {
+    switch (letter) {
+      case "A":
+        return 0;
+      case "B":
+        return 1;
+      case "C":
+        return 2;
+      case "D":
+        return 3;
+      case "E":
+        return 4;
+      case "F":
+        return 5;
+      case "G":
+        return 6;
+    }
+  }
 
   // Add all pieces to board
   for (let i = 0; i < piecesPositionList.length; i++) {
     const array = piecesPositionList[i].split("_");
     const letter = array[0];
+    const colNum = whatNum(letter);
     const colourPlayed = array[1];
+    console.log(letter, colNum);
 
-    gameBoardState[letter].push(colourPlayed);
-    const lastElement = gameBoardState[letter].length - 1;
+    gameBoardState[colNum].push(colourPlayed);
+    const lastElement = gameBoardState[colNum].length - 1;
     //         console.log("current:", piecesPositionList[i] )
     //         console.log(`i: ${i}, letter:${letter}, colour:, ${colourPlayed}`)
     //         console.log("gameboard for letter", letter,":", gameBoardState[letter])
@@ -25,7 +77,7 @@ function whoIsWinner(piecesPositionList) {
     //       console.log("number of elements in array", letter,":", gameBoardState[letter].length)
     // co-ordinates of last played piece is: gameBoardState[letter][lastElement]
 
-    if (i >= 6) {
+    if (i >= 100) {
       console.log("i:", i, "letter:", letter, "board:", gameBoardState);
       console.log("checking if game won");
 
@@ -33,13 +85,13 @@ function whoIsWinner(piecesPositionList) {
       for (let j = 0; j <= 3; j++) {
         let rowCheck = [];
         for (let k = 0; k <= 3; k++) {
-          if (gameBoardState[letter][j + k] == undefined) {
+          if (gameBoardState[colNum][j + k] == undefined) {
             //             console.log("undefined");
             break;
           }
           let sum = j + k;
           //           console.log("sum", sum)
-          rowCheck.push(gameBoardState[letter][sum]);
+          rowCheck.push(gameBoardState[colNum][sum]);
           //           console.log("current row:", rowCheck)
 
           if (k > 0) {
@@ -62,7 +114,7 @@ function whoIsWinner(piecesPositionList) {
       for (let j = 1; j <= 3; j++) {
         //         console.log("column check");
 
-        if (gameBoardState[letter].length < 4) {
+        if (gameBoardState[colNum].length < 4) {
           //           console.log("column has less than 4 pieces");
           break;
         }
@@ -71,17 +123,17 @@ function whoIsWinner(piecesPositionList) {
         //         columnCheck.push(gameBoardState[letter][lastElement - j]);
         //         console.log(columnCheck);
         if (
-          gameBoardState[letter][lastElement - j] !==
-          gameBoardState[letter][lastElement]
+          gameBoardState[colNum][lastElement - j] !==
+          gameBoardState[colNum][lastElement]
         ) {
           break;
         }
-        return gameBoardState[letter][lastElement];
+        return gameBoardState[colNum][lastElement];
       }
 
       // diagonal left:
       console.log("checking diagonal left");
-      if (letter === "A") {
+      if (colNum === "A") {
       }
     }
   }
@@ -97,3 +149,5 @@ function whoIsWinner(piecesPositionList) {
 //              - column
 //              - diagonal up
 //              - diagonal down
+
+whoIsWinner(piecesPositionList);
