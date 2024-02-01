@@ -18,6 +18,7 @@
 
 function titleToNumber(title) {
   let titleArr = [];
+  let colNum = 0;
 
   const alphabetConvertNumObj = {
     A: 1,
@@ -52,7 +53,11 @@ function titleToNumber(title) {
     titleArr.unshift(title[i]);
   }
 
-  console.log(titleArr);
+  for (let i = 0; i < titleArr.length; i++) {
+    let letter = titleArr[i];
+    console.log(letter);
+    console.log(alphabetConvertNumObj[letter]);
+  }
 }
 
 // Plan
