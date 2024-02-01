@@ -9,3 +9,12 @@
 // If the sperm contains the X chromosome, return "Congratulations! You're going to have a daughter."; If the sperm contains the Y chromosome, return "Congratulations! You're going to have a son.";
 
 /* Solution */
+
+function chromosomeCheck(sperm) {
+  for (let i = 0; i < sperm.length; i++) {
+    if (sperm[i] === "Y") {
+      return "Congratulations! You're going to have a son.";
+    }
+  }
+  return "Congratulations! You're going to have a daughter.";
+}
