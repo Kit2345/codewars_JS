@@ -2,6 +2,6 @@ function fileName(name) {
   console.log(name.replaceAll(" ", "-"));
 }
 
-let name = "Highest and Lowest";
+let name = "Ping Pong";
 
 fileName(name);
