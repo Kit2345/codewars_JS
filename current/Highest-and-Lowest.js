@@ -32,12 +32,16 @@ function highAndLow(numbers) {
   //   console.log("number", numArray);
   //   console.log(typeof numArray[1]);
 
-  sortedNumArray = numArray.sort((a, b) => b - a);
+  let sortedNumArray = numArray.sort((a, b) => b - a);
   console.log("sorted", sortedNumArray);
 
   const highestNum = sortedNumArray[0];
   const lowestNum = sortedNumArray[sortedNumArray.length - 1];
-  console.log("highest:", highestNum, "lowest:", lowestNum);
+  //   console.log("highest:", highestNum, "lowest:", lowestNum);
+
+  const returnValues = `${highestNum} ${lowestNum}`;
+  //   console.log(returnValues);
+  return returnValues;
 }
 
 highAndLow(numbers);
