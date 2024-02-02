@@ -73,7 +73,23 @@ function pingPong(sounds) {
 
   // convert string to array:
   const soundsArr = sounds.split("-");
-  //   console.log(soundsArr);
+  console.log(soundsArr);
+
+  for (let i = 1; i < soundsArr.length; i++) {
+    // first server
+    whoServed = soundsArr[0];
+    lastHitter = soundsArr[0];
+
+    // keep track of last hitter
+    if (soundsArr[i] === "ping" || soundsArr[i] === "pong") {
+      console.log("ping or pong", "i:", i, soundsArr[i]);
+      lastHitter = soundsArr[i];
+    }
+
+    // if (soundsArr[i - 1] !== "ping" && soundsArr[i - 1] !== "pong") {
+    //   console.log("i:", i, soundsArr[i - 1]);
+    // }
+  }
 }
 
 pingPong(sounds);
