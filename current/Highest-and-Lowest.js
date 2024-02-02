@@ -25,12 +25,19 @@ const numbers = "8 3 -5 42 -1 0 0 -9 4 7 4 -4";
 
 function highAndLow(numbers) {
   let stringArray = numbers.split(" ");
-  console.log("string", stringArray);
-  console.log(typeof stringArray[1]);
+  //   console.log("string", stringArray);
+  //   console.log(typeof stringArray[1]);
 
   let numArray = stringArray.map((string) => Number(string));
-  console.log("number", numArray);
-  console.log(typeof numArray[1]);
+  //   console.log("number", numArray);
+  //   console.log(typeof numArray[1]);
+
+  sortedNumArray = numArray.sort((a, b) => b - a);
+  console.log("sorted", sortedNumArray);
+
+  const highestNum = sortedNumArray[0];
+  const lowestNum = sortedNumArray[sortedNumArray.length - 1];
+  console.log("highest:", highestNum, "lowest:", lowestNum);
 }
 
 highAndLow(numbers);
