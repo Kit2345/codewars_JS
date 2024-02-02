@@ -53,10 +53,27 @@ function titleToNumber(title) {
     titleArr.unshift(title[i]);
   }
 
-  for (let i = 0; i < titleArr.length; i++) {
+  titleArr.unshift(0);
+
+  for (let i = 1; i < titleArr.length; i++) {
     let letter = titleArr[i];
-    console.log(letter);
-    console.log(alphabetConvertNumObj[letter]);
+
+    let alphaNum = alphabetConvertNumObj[letter];
+
+    colNum += expn(26, i) * alphaNum;
+  }
+
+  return colNum;
+
+  function expn(x, n) {
+    let num = 0;
+    for (let i = 1; i < n; i++) {
+      if (i === 1) {
+        num = 1;
+      }
+      num *= 26;
+    }
+    return num;
   }
 }
 
