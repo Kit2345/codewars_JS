@@ -86,9 +86,15 @@ function pingPong(sounds) {
       lastHitter = soundsArr[i];
     }
 
-    // if (soundsArr[i - 1] !== "ping" && soundsArr[i - 1] !== "pong") {
-    //   console.log("i:", i, soundsArr[i - 1]);
-    // }
+    // Bad shot:
+    else {
+      console.log("bad shot", "i:", i, soundsArr[i]);
+      // scoring:
+      if (soundsArr[i - 1] === "ping" || soundsArr[i - 1] === "pong") {
+        lastHitter === "ping" ? score.pong++ : score.ping++;
+        console.log("server:", whoServed, "lastHitter:", lastHitter, score);
+      }
+    }
   }
 }
 
