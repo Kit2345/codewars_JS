@@ -65,15 +65,19 @@ function titleToNumber(title) {
 
   return colNum;
 
-  function expn(x, n) {
-    let num = 0;
-    for (let i = 1; i < n; i++) {
-      if (i === 1) {
-        num = 1;
+  function expn(a, b) {
+    let expo = a;
+    if (b === 0) {
+      return 1;
+    } else if (b === 1) {
+      return a;
+    } else {
+      for (let i = 2; i <= b; i++) {
+        expo *= a;
       }
-      num *= 26;
     }
-    return num;
+
+    return expo;
   }
 }
 
