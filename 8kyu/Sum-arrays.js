@@ -30,5 +30,16 @@ let numbers = [1, 5.2, 4, 0, -1];
 // Sum Numbers
 function sum(numbers) {
   "use strict";
-  console.log(numbers);
+  //   console.log(numbers);
+  let sumNums = 0;
+  if (numbers.length === 0) {
+    return 0;
+  }
+  for (let i = 0; i < numbers.length; i++) {
+    sumNums += numbers[i];
+  }
+  //   console.log(sumNums);
+  return sumNums;
 }
+
+sum(numbers);
