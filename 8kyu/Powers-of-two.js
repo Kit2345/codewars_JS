@@ -10,9 +10,14 @@
 
 /* Solution */
 
-let n = 4;
-
 function powersOfTwo(n) {
-  console.log(n);
-  return [];
+  let answersArr = [1];
+  let answer = 1;
+  for (let i = 1; i <= n; i++) {
+    answer *= 2;
+    answersArr.push(answer);
+  }
+  return answersArr;
 }
+
+powersOfTwo(4);
