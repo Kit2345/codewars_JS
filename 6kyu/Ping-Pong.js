@@ -79,11 +79,14 @@ function pingPong(sounds) {
   let lastHitter = soundsArr[0];
 
   for (let i = 1; i < soundsArr.length; i++) {
+    // if good shot
+
     // keep track of last hitter
     if (soundsArr[i] === "ping" || soundsArr[i] === "pong") {
       lastHitter = soundsArr[i];
       console.log("ping or pong", "i:", i, soundsArr[i], lastHitter);
 
+      // if previous shot was a bad shot, then new rally, so new server needs to be updated
       if (soundsArr[i - 1] !== "ping" && soundsArr[i - 1] !== "pong") {
         whoServed = soundsArr[i];
         console.log("new server", whoServed);
