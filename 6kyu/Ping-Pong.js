@@ -53,6 +53,8 @@
 //      who served
 //      who won rally/last hitter
 //      score
+//          check server with last hitter. If not the same, server ++
+//          new server.
 
 const sounds = "pong-ping-dong-ping-pong-tink-bonk-pong-ping-doof";
 
@@ -63,9 +65,6 @@ function pingPong(sounds) {
     pong: 0,
   };
 
-  let whoServed = "";
-  let lastHitter = "";
-
   //   console.log("initial ping score", score["ping"]);
   //   score.ping++;
   //   console.log("final ping score");
@@ -75,15 +74,20 @@ function pingPong(sounds) {
   const soundsArr = sounds.split("-");
   console.log(soundsArr);
 
-  for (let i = 1; i < soundsArr.length; i++) {
-    // first server
-    whoServed = soundsArr[0];
-    lastHitter = soundsArr[0];
+  // first server
+  let whoServed = soundsArr[0];
+  let lastHitter = soundsArr[0];
 
+  for (let i = 1; i < soundsArr.length; i++) {
     // keep track of last hitter
     if (soundsArr[i] === "ping" || soundsArr[i] === "pong") {
-      console.log("ping or pong", "i:", i, soundsArr[i]);
       lastHitter = soundsArr[i];
+      console.log("ping or pong", "i:", i, soundsArr[i], lastHitter);
+
+      if (soundsArr[i - 1] !== "ping" && soundsArr[i - 1] !== "pong") {
+        whoServed = soundsArr[i];
+        console.log("new server", whoServed);
+      }
     }
 
     // Bad shot:
@@ -91,9 +95,30 @@ function pingPong(sounds) {
       console.log("bad shot", "i:", i, soundsArr[i]);
       // scoring:
       if (soundsArr[i - 1] === "ping" || soundsArr[i - 1] === "pong") {
-        lastHitter === "ping" ? score.pong++ : score.ping++;
-        console.log("server:", whoServed, "lastHitter:", lastHitter, score);
+        console.log("scoring opportunity", i, whoServed, lastHitter);
+
+        // check to see if this scores points (i.e. server doesnt equal last hitter)
+        if (whoServed != lastHitter) {
+          console.log("scoring: whoServed != lastHitter");
+          lastHitter === "ping" ? score.pong++ : score.ping++;
+          console.log("server:", whoServed, "lastHitter:", lastHitter, score);
+        }
       }
+    }
+  }
+  console.log("final score", score);
+
+  if (score.ping > score.pong) {
+    console.log("ping won");
+    return "ping";
+  } else if (score.ping < score.pong) {
+    console.log("pong won");
+    return "pong";
+  } else {
+    if (lastHitter === "ping") {
+      return "pong";
+    } else {
+      return "ping";
     }
   }
 }
