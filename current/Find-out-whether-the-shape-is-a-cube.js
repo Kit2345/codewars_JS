@@ -26,4 +26,4 @@ function cubeChecker(volume, side) {
   return false;
 }
 
-console.log(cubeChecker(8, 3));
+console.log(cubeChecker(-8, -2));
