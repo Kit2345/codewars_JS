@@ -17,12 +17,16 @@
 /* Solution */
 
 function cubeChecker(volume, side) {
+  if (side <= 0 || volume <= 0) {
+    console.log("false");
+    return false;
+  }
   console.log(volume, side);
   if (side * side * side === volume) {
     console.log("true");
     return true;
   }
-
+  console.log("default");
   return false;
 }
 
