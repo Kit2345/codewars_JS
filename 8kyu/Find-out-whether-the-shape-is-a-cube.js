@@ -17,15 +17,21 @@
 /* Solution */
 
 function cubeChecker(volume, side) {
+  console.log(volume, side);
+
+  // if volume or side is below 0, return false
   if (side <= 0 || volume <= 0) {
     console.log("false");
     return false;
   }
-  console.log(volume, side);
+
+  // if shape is cuboid, then all 3 side values are the same.
   if (side * side * side === volume) {
     console.log("true");
     return true;
   }
+
+  // otherwise it isnt a cuboid
   console.log("default");
   return false;
 }
