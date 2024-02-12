@@ -170,5 +170,7 @@ function fruit(reels, spins) {
   console.log(spin1, spin2, spin3);
 
   let reel1 = reels[0][spin1];
-  console.log(reel1);
+  let reel2 = reels[1][spin2];
+  let reel3 = reels[2][spin3];
+  console.log(reel1, reel2, reel3);
 }
