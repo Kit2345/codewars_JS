@@ -92,6 +92,73 @@
 
 /* Solution */
 
+// Plan
+//      scoring:
+//              - three       two         two + wild
+//                10 * x       x              2x
+//              - object with the value of x and item
+//              - check for 3 of the same,
+//              - check for two of the same
+//              - check for presence of Wild,
+//                          - after checking
+//                          - look up points value and formulae about what to do with value
+
+let reel = [
+  [
+    "Wild",
+    "Star",
+    "Bell",
+    "Shell",
+    "Seven",
+    "Cherry",
+    "Bar",
+    "King",
+    "Queen",
+    "Jack",
+  ],
+  [
+    "Wild",
+    "Star",
+    "Bell",
+    "Shell",
+    "Seven",
+    "Cherry",
+    "Bar",
+    "King",
+    "Queen",
+    "Jack",
+  ],
+  [
+    "Wild",
+    "Star",
+    "Bell",
+    "Shell",
+    "Seven",
+    "Cherry",
+    "Bar",
+    "King",
+    "Queen",
+    "Jack",
+  ],
+];
+
+let spins = [0, 0, 0];
+
 function fruit(reels, spins) {
   // Code here
+  //   console.log(reels, spins)
+  let fruitValue = {
+    Wild: 10,
+    Star: 9,
+    Bell: 8,
+    Shell: 7,
+    Seven: 6,
+    Cherry: 5,
+    Bar: 4,
+    King: 3,
+    Queen: 2,
+    Jack: 1,
+  };
+  console.log(fruitValue);
+  console.log(fruitValue.Bell);
 }
