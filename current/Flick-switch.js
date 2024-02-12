@@ -28,10 +28,13 @@ function flickSwitch(arr) {
   let current = true;
   let arrList = [];
   console.log(arr);
+  console.log("current", current);
 
   for (let i = 0; i < arr.length; i++) {
     if (arr[i] === "flick") {
       console.log(i, arr[i]);
+      current ? (current = false) : (current = true);
+      console.log(current);
     }
   }
 }
