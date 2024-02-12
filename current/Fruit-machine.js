@@ -103,7 +103,7 @@
 //                          - after checking
 //                          - look up points value and formulae about what to do with value
 
-let reel = [
+let reels = [
   [
     "Wild",
     "Star",
@@ -146,7 +146,7 @@ let spins = [0, 0, 0];
 
 function fruit(reels, spins) {
   // Code here
-  //   console.log(reels, spins)
+  console.log(reels, spins);
   let fruitValue = {
     Wild: 10,
     Star: 9,
@@ -159,6 +159,13 @@ function fruit(reels, spins) {
     Queen: 2,
     Jack: 1,
   };
-  console.log(fruitValue);
-  console.log(fruitValue.Bell);
+  //   console.log(fruitValue)
+  //   console.log(fruitValue.Bell)
+
+  let spin1 = spins[0];
+  let spin2 = spins[1];
+  let spin3 = spins[2];
+
+  console.log(spins);
+  console.log(spin1, spin2, spin3);
 }
