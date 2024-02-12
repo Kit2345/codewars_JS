@@ -36,5 +36,7 @@ function flickSwitch(arr) {
       current ? (current = false) : (current = true);
       console.log(current);
     }
+    arrList.push(current);
+    console.log(arrList);
   }
 }
