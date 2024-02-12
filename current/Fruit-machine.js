@@ -145,54 +145,64 @@ let reels = [
 let spins = [0, 0, 0];
 
 function fruit(reels, spins) {
-  // Code here
-  console.log(reels, spins);
-  let points = 0;
-
-  const fruitValue = {
-    Wild: 10,
-    Star: 9,
-    Bell: 8,
-    Shell: 7,
-    Seven: 6,
-    Cherry: 5,
-    Bar: 4,
-    King: 3,
-    Queen: 2,
-    Jack: 1,
-  };
-  //   console.log(fruitValue)
-  //   console.log(fruitValue.Bell)
-
-  const spin1 = spins[0];
-  const spin2 = spins[1];
-  const spin3 = spins[2];
-
-  console.log(spins);
-  console.log(spin1, spin2, spin3);
-
-  const reel1 = reels[0][spin1];
-  const reel2 = reels[1][spin2];
-  const reel3 = reels[2][spin3];
-  console.log(reel1, reel2, reel3);
-
-  // check if all 3 are the same
-  if (reel1 === reel2 && reel1 === reel3) {
-    console.log("all three the same");
-    points = 10 * fruitValue[reel1];
+    // Code here
+    console.log(reels, spins);
+    let points = 0;
+  
+    const fruitValue = {
+      Wild: 10,
+      Star: 9,
+      Bell: 8,
+      Shell: 7,
+      Seven: 6,
+      Cherry: 5,
+      Bar: 4,
+      King: 3,
+      Queen: 2,
+      Jack: 1,
+    };
+    //   console.log(fruitValue)
+    //   console.log(fruitValue.Bell)
+  
+    // Convert reels and spins into what each reel refers to
+    const spin1 = spins[0];
+    const spin2 = spins[1];
+    const spin3 = spins[2];
+  
+    console.log(spins);
+    console.log(spin1, spin2, spin3);
+  
+    const reel1 = reels[0][spin1];
+    const reel2 = reels[1][spin2];
+    const reel3 = reels[2][spin3];
+    console.log(reel1, reel2, reel3);
+  
+    // check if all 3 are the same
+    if (reel1 === reel2 && reel1 === reel3) {
+      console.log("all three the same");
+      points = 10 * fruitValue[reel1];
+      return points;
+    }
+  
+    // if 2 are the same
+  
+    //      put all reels inside an array
+    let reelResult = [];
+    reelResult.push(reel1, reel2, reel3);
+    console.log(reelResult);
+  
+    //      order result
+    let orderedResult = reelResult.sort();
+    console.log(orderedResult);
+  
+    //      check if two are the same: 
+    if (orderedResult[1] === orderedResult[0] || orderedResult[1] === orderedResult[2]){
+        if (orderedResult[2] ===  "Wild" || orderedResult[0] === "Wild") {
+      points = fruitValue[orderedResult[1]] * 2
+      return points
+    }
+        points = fruitValue[orderedResult[1]]
+        
+        } 
+  
     return points;
-  }
-
-  //   put all reels inside an array
-  let reelResult = [];
-  reelResult.push(reel1, reel2, reel3);
-  console.log(reelResult);
-
-  //   check if 2 are the same
-
-  //   order result
-  let orderedResult = reelResult.sort();
-  console.log(orderedResult);
-
-  return points;
-}
