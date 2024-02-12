@@ -147,9 +147,9 @@ let spins = [0, 0, 0];
 function fruit(reels, spins) {
   // Code here
   console.log(reels, spins);
+  let points = 0;
 
-  // object for points
-  let fruitValue = {
+  const fruitValue = {
     Wild: 10,
     Star: 9,
     Bell: 8,
@@ -164,23 +164,25 @@ function fruit(reels, spins) {
   //   console.log(fruitValue)
   //   console.log(fruitValue.Bell)
 
-  // convert reel and spin into an array with reel results
-  let spin1 = spins[0];
-  let spin2 = spins[1];
-  let spin3 = spins[2];
+  const spin1 = spins[0];
+  const spin2 = spins[1];
+  const spin3 = spins[2];
 
   console.log(spins);
   console.log(spin1, spin2, spin3);
 
-  let reel1 = reels[0][spin1];
-  let reel2 = reels[1][spin2];
-  let reel3 = reels[2][spin3];
+  const reel1 = reels[0][spin1];
+  const reel2 = reels[1][spin2];
+  const reel3 = reels[2][spin3];
   console.log(reel1, reel2, reel3);
 
-  //   let reelResult = [];
-  //   reelResult.push(reel1, reel2, reel3);
+  //   delete?
+  //   let reelResult = []
+  //   reelResult.push(reel1, reel2, reel3)
+  //   console.log(reelResult)
 
-  //   console.log(reelResult);
-
-  // Loop to check
+  // check if all 3 are the same
+  if (reel1 === reel2 && reel1 === reel3) {
+    console.log("all three the same");
+  }
 }
