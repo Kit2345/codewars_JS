@@ -189,15 +189,22 @@ function fruit(reels, spins) {
   //      put all reels inside an array
   let reelResult = [];
   reelResult.push(reel1, reel2, reel3);
-  console.log(reelResult);
+  //     console.log(reelResult);
 
   //      order result
   let orderedResult = reelResult.sort();
   console.log(orderedResult);
 
   //      check if two are the same:
+
+  //   if 2 of the same are Wild
+  if (orderedResult[1] === "Wild") {
+    points = fruitValue[orderedResult[1]];
+    return points;
+  }
+
   if (
-    (orderedResult[1] !== "Wild" && orderedResult[1] === orderedResult[0]) ||
+    orderedResult[1] === orderedResult[0] ||
     orderedResult[1] === orderedResult[2]
   ) {
     if (orderedResult[2] === "Wild" || orderedResult[0] === "Wild") {
