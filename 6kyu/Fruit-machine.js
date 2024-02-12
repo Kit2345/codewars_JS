@@ -203,10 +203,12 @@ function fruit(reels, spins) {
     return points;
   }
 
+  // if 2 of the same isn't wild
   if (
     orderedResult[1] === orderedResult[0] ||
     orderedResult[1] === orderedResult[2]
   ) {
+    // if two of the same AND wild as third item
     if (orderedResult[2] === "Wild" || orderedResult[0] === "Wild") {
       points = fruitValue[orderedResult[1]] * 2;
       return points;
