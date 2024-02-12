@@ -176,15 +176,23 @@ function fruit(reels, spins) {
   const reel3 = reels[2][spin3];
   console.log(reel1, reel2, reel3);
 
-  //   delete?
-  //   let reelResult = []
-  //   reelResult.push(reel1, reel2, reel3)
-  //   console.log(reelResult)
-
   // check if all 3 are the same
   if (reel1 === reel2 && reel1 === reel3) {
     console.log("all three the same");
     points = 10 * fruitValue[reel1];
+    return points;
   }
+
+  //   put all reels inside an array
+  let reelResult = [];
+  reelResult.push(reel1, reel2, reel3);
+  console.log(reelResult);
+
+  //   check if 2 are the same
+
+  //   order result
+  let orderedResult = reelResult.sort();
+  console.log(orderedResult);
+
   return points;
 }
