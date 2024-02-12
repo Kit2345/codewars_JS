@@ -147,6 +147,8 @@ let spins = [0, 0, 0];
 function fruit(reels, spins) {
   // Code here
   console.log(reels, spins);
+
+  // object for points
   let fruitValue = {
     Wild: 10,
     Star: 9,
@@ -162,6 +164,7 @@ function fruit(reels, spins) {
   //   console.log(fruitValue)
   //   console.log(fruitValue.Bell)
 
+  // convert reel and spin into an array with reel results
   let spin1 = spins[0];
   let spin2 = spins[1];
   let spin3 = spins[2];
@@ -174,8 +177,10 @@ function fruit(reels, spins) {
   let reel3 = reels[2][spin3];
   console.log(reel1, reel2, reel3);
 
-  let reelResult = [];
-  reelResult.push(reel1, reel2, reel3);
+  //   let reelResult = [];
+  //   reelResult.push(reel1, reel2, reel3);
 
-  console.log(reelResult);
+  //   console.log(reelResult);
+
+  // Loop to check
 }
