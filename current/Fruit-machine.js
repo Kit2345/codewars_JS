@@ -184,5 +184,7 @@ function fruit(reels, spins) {
   // check if all 3 are the same
   if (reel1 === reel2 && reel1 === reel3) {
     console.log("all three the same");
+    points = 10 * fruitValue[reel1];
   }
+  return points;
 }
