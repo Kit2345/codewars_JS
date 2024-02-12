@@ -23,3 +23,15 @@
 //      - array to contain true/false
 //      - variable to keep track of true or false
 //      - loop to go through each element. and add true/false to array
+
+function flickSwitch(arr) {
+  let current = true;
+  let arrList = [];
+  console.log(arr);
+
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] === "flick") {
+      console.log(i, arr[i]);
+    }
+  }
+}
