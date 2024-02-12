@@ -146,7 +146,7 @@ let spins = [0, 0, 0];
 
 function fruit(reels, spins) {
   // Code here
-  console.log(reels, spins);
+  //     console.log(reels, spins);
   let points = 0;
 
   const fruitValue = {
@@ -197,7 +197,7 @@ function fruit(reels, spins) {
 
   //      check if two are the same:
   if (
-    orderedResult[1] === orderedResult[0] ||
+    (orderedResult[1] !== "Wild" && orderedResult[1] === orderedResult[0]) ||
     orderedResult[1] === orderedResult[2]
   ) {
     if (orderedResult[2] === "Wild" || orderedResult[0] === "Wild") {
