@@ -39,4 +39,5 @@ function flickSwitch(arr) {
     arrList.push(current);
     console.log(arrList);
   }
+  return arrList;
 }
