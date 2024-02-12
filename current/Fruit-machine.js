@@ -168,4 +168,7 @@ function fruit(reels, spins) {
 
   console.log(spins);
   console.log(spin1, spin2, spin3);
+
+  let reel1 = reels[0][spin1];
+  console.log(reel1);
 }
