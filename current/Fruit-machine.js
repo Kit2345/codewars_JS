@@ -173,4 +173,9 @@ function fruit(reels, spins) {
   let reel2 = reels[1][spin2];
   let reel3 = reels[2][spin3];
   console.log(reel1, reel2, reel3);
+
+  let reelResult = [];
+  reelResult.push(reel1, reel2, reel3);
+
+  console.log(reelResult);
 }
