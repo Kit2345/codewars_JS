@@ -25,32 +25,56 @@
 //                  if equal return array
 //                  if sum is greater than n*n*n then stop otherwise check next array
 
+// Noticed that values are also n*n as the middle array number.
+
 function findSummands(n) {
   let sumArr = [];
-  const nCubed = n * n * n;
-  //   console.log("nCubed =", nCubed)
-  let currentSum = 0;
+  const nSquared = n * n;
+  const halfN = Math.floor(n / 2);
 
-  //   case: n=1
   if (n === 1) {
     sumArr.push(1);
-    console.log("n=1", sumArr);
+    return sumArr;
+  }
+
+  if (nSquared % 2 === 0) {
+    console.log(n, nSquared, "even");
   } else {
-    //       console.log("less than nCubed", currentSum)
-    for (let i = 1; i <= nCubed; i = i + 2) {
-      sumArr = [];
-      currentSum = 0;
-      for (let j = 0; j < n * 2; j = j + 2) {
-        //     console.log("j", j)
-        currentSum += i + j;
-        sumArr.push(i + j);
-        //     console.log(sumArr)
-      }
-      console.log("i:", i, "n:", n, sumArr, currentSum);
-      if (currentSum === nCubed) {
-        return sumArr;
-      }
+    console.log(n, nSquared, "odd");
+    for (let i = nSquared - 2 * halfN; i <= nSquared + 2 * halfN; i = i + 2) {
+      sumArr.push(i);
+      console.log(n, sumArr);
     }
   }
   return sumArr;
 }
+
+// function findSummands(n) {
+//   let sumArr = [];
+//   const nCubed = n * n * n;
+//   //   console.log("nCubed =", nCubed)
+//   let currentSum = 0;
+
+//   //   case: n=1
+//   if (n === 1) {
+//     sumArr.push(1);
+//     console.log("n=1", sumArr);
+//   } else {
+//     //       console.log("less than nCubed", currentSum)
+//     for (let i = 1; i <= nCubed; i = i + 2) {
+//       sumArr = [];
+//       currentSum = 0;
+//       for (let j = 0; j < n * 2; j = j + 2) {
+//         //     console.log("j", j)
+//         currentSum += i + j;
+//         sumArr.push(i + j);
+//         //     console.log(sumArr)
+//       }
+//       console.log("i:", i, "n:", n, sumArr, currentSum);
+//       if (currentSum === nCubed) {
+//         return sumArr;
+//       }
+//     }
+//   }
+//   return sumArr;
+// }
