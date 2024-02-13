@@ -27,13 +27,30 @@
 
 function findSummands(n) {
   let sumArr = [];
+  const nCubed = n * n * n;
+  //   console.log("nCubed =", nCubed)
+  let currentSum = 0;
 
   //   case: n=1
   if (n === 1) {
     sumArr.push(1);
-    console.log(sumArr);
-    return sumArr;
+    console.log("n=1", sumArr);
+  } else {
+    //       console.log("less than nCubed", currentSum)
+    for (let i = 1; i <= nCubed; i = i + 2) {
+      sumArr = [];
+      currentSum = 0;
+      for (let j = 0; j < n * 2; j = j + 2) {
+        //     console.log("j", j)
+        currentSum += i + j;
+        sumArr.push(i + j);
+        //     console.log(sumArr)
+      }
+      console.log("i:", i, "n:", n, sumArr, currentSum);
+      if (currentSum === nCubed) {
+        return sumArr;
+      }
+    }
   }
-
   return sumArr;
 }
