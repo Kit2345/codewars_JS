@@ -31,6 +31,7 @@ function findSummands(n) {
   let sumArr = [];
   const nSquared = n * n;
   const halfN = Math.floor(n / 2);
+  console.log("halfN", halfN);
 
   if (n === 1) {
     sumArr.push(1);
@@ -39,11 +40,19 @@ function findSummands(n) {
 
   if (nSquared % 2 === 0) {
     console.log(n, nSquared, "even");
+    for (let i = nSquared + 1; i <= nSquared + (halfN - 1) * 2 + 1; i = i + 2) {
+      sumArr.push(i);
+      //     console.log(sumArr)
+    }
+    for (let i = nSquared - 1; i >= nSquared + 1 - halfN * 2; i = i - 2) {
+      sumArr.unshift(i);
+      //           console.log(sumArr)
+    }
   } else {
     console.log(n, nSquared, "odd");
     for (let i = nSquared - 2 * halfN; i <= nSquared + 2 * halfN; i = i + 2) {
       sumArr.push(i);
-      console.log(n, sumArr);
+      //     console.log(n, sumArr)
     }
   }
   return sumArr;
